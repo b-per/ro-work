@@ -11,15 +11,15 @@ customers as (
 ),
 
 orders as (
-    select * from {{ ref('fct_orders') }}
+    select * from {{ ref('orders') }}
 ),
 
-agg_orders as (
+orders2 as (
     select
         customer_id,
         sum(net_item_sales_amount) as total_sales
     from orders
-    group by 1
+    group by customer_id
 ),
 
 final as (
@@ -28,8 +28,8 @@ final as (
         customers.market_segment,
         round(sum(agg_orders.total_sales),2) as total_sales
     from customers
-    left join agg_orders on customers.customer_id = agg_orders.customer_id
-    group by 1, 2
+    join orders2 agg_orders on customers.customer_id = agg_orders.customer_id
+    group by 1, market_segment
 )
 
 select * from final

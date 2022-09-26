@@ -3,6 +3,8 @@ version: 2
 models:
   - name: dim_customers
     description: Customer dimensions table
+    config:
+      full_refrtesh: false
     columns:
       - name: customer_id
         description: Primary id on the customers table

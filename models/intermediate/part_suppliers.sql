@@ -1,3 +1,10 @@
+{{
+    config(
+        tags=['intermediate']
+    )
+}}
+
+
 with part as (
     
     select * from {{ ref('stg_tpch_parts') }}
@@ -16,7 +23,6 @@ part_supplier as (
 
 ),
 
-final as (
     select 
 
     part_supplier.part_supplier_id,
@@ -48,6 +54,3 @@ inner join
         on part_supplier.supplier_id = supplier.supplier_id
 order by
     part.part_id
-)
-
-select * from final

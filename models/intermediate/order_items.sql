@@ -1,7 +1,12 @@
+{{
+    config(
+        tags=['intermediate']
+    )
+}}
 
 with orders as (
     
-    select * from {{ ref('stg_tpch_orders') }}
+    select * from {{ target.schema }}.stg_tpch_orders
 
 ),
 
