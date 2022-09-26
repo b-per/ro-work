@@ -1,6 +1,7 @@
 {{
     config(
-        materialized = 'table',
+        materialized = 'incremental',
+        unique_id='customer_id',
         transient=false
     )
 }}
@@ -21,16 +22,16 @@ region as (
 ),
 final as (
     select 
-        customer.customer_id,
-        customer.name,
-        customer.address,
-        {# nation.nation_id as nation_id, #}
+        .customer_id,
+        name,
+        address,
+        -- nation.nation_id as nation_id,
         nation.name as nation,
         {# region.region_id as region_id, #}
         region.name as region,
-        customer.phone_number,
-        customer.account_balance,
-        customer.market_segment
+        phone_number,
+        account_balance,
+        market_segment
     from
         customer
         inner join nation
