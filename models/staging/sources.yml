@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: tpch
     description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-gukeye/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
-    database: snowflake_sample_data
+    database: raw_tpch
     schema: tpch_sf1
     tables:
       - name: orders
@@ -209,19 +209,3 @@ sources:
                   severity: warn
               - not_null:
                   severity: warn
-          - name: s_name
-            description: key of the supplier
-          - name: s_address
-            description: address of the supplier
-          - name: s_nationkey
-            description: Foreign key to N_NATIONkey
-            tests:
-              - relationships:
-                  to: source('tpch', 'nation')
-                  field: n_nationkey
-          - name: s_phone
-            description: phone number of the supplier
-          - name: s_acctbal
-            description: raw account balance
-          - name: s_comment
-            description: '{{ doc("comment") }}'

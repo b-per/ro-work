@@ -163,6 +163,8 @@ models:
         description: '{{ doc("comment") }}'
 
   - name: stg_tpch_suppliers
+    config:
+        materialized: ephemeral
     description: staging layer for suppliers data
     columns:
       - name: supplier_id

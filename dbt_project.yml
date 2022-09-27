@@ -28,6 +28,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 models:
+  +transient: 
+    false
+  staging:
+    +schema: staging
+    +transient: true
   rapid_onboarding_exemplar:
     intermediate:
       +materialized: view
@@ -35,3 +40,6 @@ models:
       +materialized: table
     staging:
       +materialized: view
+
+sources:
+  database: snowflake_sample_data

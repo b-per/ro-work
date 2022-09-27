@@ -1,13 +1,20 @@
+{{
+    config(
+        tags=['intermediate'],
+        alias='orders_items',
+        schema='intermediate'
+    )
+}}
 
 with orders as (
     
-    select * from {{ ref('stg_tpch_orders') }}
+    select * from {{ target.schema }}.stg_tpch_orders
 
 ),
 
 line_item as (
 
-    select * from {{ ref('stg_tpch_line_items') }}
+    select * from {{ source('tpch', 'lineitem') }}
 
 )
 select 
