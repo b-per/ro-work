@@ -6,14 +6,10 @@ with source as (
 
 renamed as (
 
-    select
-
-        -- ids
-        r_regionkey as region_id,
-
-        -- descriptions
-        r_name as name,
-        r_comment as comment
+    SELECT
+        source.r_regionkey as region_id,
+        source.r_name as name,
+        source.r_comment as comment
 
     from source
 

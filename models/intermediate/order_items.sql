@@ -1,6 +1,8 @@
 {{
     config(
-        tags=['intermediate']
+        tags=['intermediate'],
+        alias='orders_items',
+        schema='intermediate'
     )
 }}
 

@@ -2,11 +2,11 @@
 
 select
     p_partkey as part_id,
-        p_name as name,
-        p_type as type,
-        p_size as size,
-        p_mfgr as manufacturer,
-        p_brand as brand,
+        P_NAME as name,
+        P_TYPE as type,
+        P_SIZE as size,
+        P_MFGR as manufacturer,
+        P_BRAND as brand,
         p_comment as comment,
         p_container as container,
     p_retailprice as retail_price
